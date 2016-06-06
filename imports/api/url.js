@@ -17,26 +17,26 @@ Meteor.methods({
       return false;
     }
 
-		// check url is already shorted
-		u = URL.findOne({"url": url});
+    // check url is already shorted
+    u = URL.findOne({"url": url});
     if(u != undefined) {
-			console.log('Check exist, u is ' + typeof(u));
-			return u.alter;
-		} 
+      console.log('Check exist, u is ' + typeof(u));
+      return u.alter;
+    }
     else { 
-			// Check alter not duplicate
+      // Check alter not duplicate
       do {
-    		var alter = Helper.randString();
-			}
+        var alter = Helper.randString();
+      }
       while(URL.find({"alter": alter}).count() > 0)
 
-    	console.log('alter: ' + alter);
+      console.log('alter: ' + alter);
 
-    	URL.insert({
-				url,
-				alter: alter,
-    	  createdAt: new Date(),
-    	});
+      URL.insert({
+        url,
+        alter: alter,
+        createdAt: new Date(),
+      });
       return alter;
     }
   },

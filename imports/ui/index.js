@@ -32,5 +32,5 @@ Template.body.events({
 });
 
 Template.body.onCreated(function(){
-	console.log('Body load');
+  console.log('Body load');
 })
